@@ -11,6 +11,7 @@ public class SummaryMetricTask implements Runnable {
         Summary summaryMetric = Summary.build()
                                        .name("summary_metric")
                                        .help("study prometheus summary metric")
+                                       .labelNames("path")
                                        .register();
 
         int count = 0;
@@ -32,7 +33,7 @@ public class SummaryMetricTask implements Runnable {
             // 在本例中，对外暴露的两个Metric分别是 summary_metric_count 和 summary_metric_sum
             // summary_metric_sum 的值就是所有传给observe方法参数值的总和，对应程序变量sum的值
             // summary_metric_count 的值是observe方法被调用的总次数，对应程序变量count的值
-            summaryMetric.observe(number);
+            summaryMetric.labels("/foo").observe(number);
 
             System.out.println("summary observe count: " + count);
             System.out.println("summary observe sum: " + sum);
