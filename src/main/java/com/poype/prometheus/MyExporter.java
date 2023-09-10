@@ -10,8 +10,7 @@ public class MyExporter {
     public static void main(String[] args) throws IOException {
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);
-        executorService.execute(new CounterMetricTask());
-        executorService.execute(new GaugeMetricTask());
+        executorService.execute(new HistogramMetricTask());
 
         // 使用HTTP Server暴露采集的数据
         HTTPServer server = new HTTPServer(8090);
