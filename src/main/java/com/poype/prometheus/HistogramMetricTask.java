@@ -71,3 +71,9 @@ public class HistogramMetricTask implements Runnable {
         }
     }
 }
+
+/**
+ * Fundamentally, a metrics-based system like Prometheus is not going to provide 100% accurate quantiles.
+ * For that you would need to calculate the quantiles from a log-based system.
+ * But what Prometheus provides is good enough for most practical alerting and debugging purposes.
+ **/
