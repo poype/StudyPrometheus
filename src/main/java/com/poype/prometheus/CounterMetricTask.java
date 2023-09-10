@@ -36,7 +36,8 @@ public class CounterMetricTask implements Runnable {
             } else if (TestUtil.randomNumber() % 4 == 2) {
                 requestCounter.labels("/bbb", "POST", "504").inc();
             } else {
-                requestCounter.labels("/ccc", "GET", "200").inc();
+                // 一次增加一个很大的数
+                requestCounter.labels("/ccc", "GET", "200").inc(100);
             }
         }
     }
